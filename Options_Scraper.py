@@ -7,12 +7,13 @@ import yfinance as yf
 
 def fetch_options_data(ticker):
 	"""
-	Fetch and display options date for a given  stock ticker.
+	Fetch and display options date for a given stock ticker, and save to a CSV file.
 	
 
 	Parameters:
 	ticker (str): Stock ticker symbol
-	
+	filename(str): Name of the CSV file	
+
 	Returns:
 	DataFrame: Options data
 	"""
@@ -27,6 +28,7 @@ def fetch_options_data(ticker):
 # Fetch Options data for each Expiration
 
 	options_data = []
+
 	
 	for expiration in expirations:
 		opt = stock.option_chain(expiration)
@@ -41,3 +43,27 @@ def fetch_options_data(ticker):
 
 	options_df = pd.concat(options_data, ignore_index=True)
 	return options_df
+
+# Display test ticker data on terminal
+
+ticker = input('ticket symbol: ')
+options_df = fetch_options_data(ticker)
+print(options_df.head())
+
+# Save the Data to a CSV file
+# A different function to separate saving logic (more modular and simple to maintain).
+# Piggy backs on the data from fetch_options_data(ticker)
+
+def fetch_and_save_options_data(ticker, filename):
+	"""
+	Fetch optionsdata for a given stock ticker and save it to a CSV file.
+	
+	Parameters:
+	ticker (str): stock symbol
+	filename (str): Name of the CSV fileto save the data
+
+	returns:
+	Print of Options Data on Terminal
+	"""
+	
+	
