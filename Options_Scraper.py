@@ -60,10 +60,18 @@ def fetch_and_save_options_data(ticker, filename):
 	
 	Parameters:
 	ticker (str): stock symbol
-	filename (str): Name of the CSV fileto save the data
+	filename (str): Name of the CSV file where to save options data
 
 	returns:
 	Print of Options Data on Terminal
 	"""
 	
 	
+	options_df = fetch_options_data(ticker)
+	options_df.to_csv(filename, index=False)
+
+	print(f"Options data for {ticker} saved to {filename}")
+filename = f"{ticker}_options_data.csv"
+
+fetch_and_save_options_data(ticker, filename)ø
+
