@@ -73,5 +73,4 @@ def fetch_and_save_options_data(ticker, filename):
 	print(f"Options data for {ticker} saved to {filename}")
 filename = f"{ticker}_options_data.csv"
 
-fetch_and_save_options_data(ticker, filename)ø
-
+fetch_and_save_options_data(ticker, filename)
